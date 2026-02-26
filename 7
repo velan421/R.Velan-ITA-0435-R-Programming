@@ -1,0 +1,11 @@
+my_list <- list(
+  vec = c(1, 2, 3, 4, 5),
+  mat = matrix(1:9, nrow = 3, byrow = TRUE),
+  f   = function(x) x^2
+)
+
+# Display contents
+str(my_list)
+print(my_list)
+# demonstrate function usage
+my_list$f(4)

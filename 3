@@ -1,0 +1,13 @@
+rows <- 3
+cols <- 4
+tables <- 2  # depth
+
+# Create a 3D array with sequential values, filled by (the default) "bydim" order
+arr <- array(1:(rows * cols * tables), dim = c(rows, cols, tables))
+
+# Assign dimension names (optional)
+dimnames(arr) <- list(
+  paste0("row", 1:rows),
+  paste0("col", 1:cols),
+  paste0("table", 1:tables)
+)

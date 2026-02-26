@@ -1,0 +1,9 @@
+set.seed(123)
+n <- 1000
+x <- rnorm(n, mean = 0, sd = 1)
+
+# counts in bins
+breaks <- seq(-3, 3, by = 0.5)
+counts <- hist(x, breaks = breaks, plot = FALSE)$counts
+bins <- cut(x, breaks = breaks, include.lowest = TRUE)
+table(bins)

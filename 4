@@ -1,0 +1,23 @@
+vec <- 1:12
+dim_vec <- c(2, 3, 2)
+
+A <- array(vec, dim = dim_vec)
+
+dimnames(A) <- list(
+  c("r1", "r2"),
+  c("c1", "c2", "c3"),
+  c("t1", "t2")
+)
+
+cat("Array A (2x3x2) with named dimensions:\n")
+print(A)
+
+# Print a few specific elements by name/position
+# - Element at r1, c2, t2
+e1 <- A["r1", "c2", "t2"]
+# - Element at r2, c3, t1
+e2 <- A["r2", "c3", "t1"]
+
+cat("\nElements by named indices:\n")
+cat("A[r1, c2, t2] =", e1, "\n")
+cat("A[r2, c3, t1] =", e2, "\n")

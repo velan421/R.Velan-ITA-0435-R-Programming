@@ -1,0 +1,27 @@
+data(women)
+
+height_factor <- factor(women$height)
+
+cat("Women Dataset - Height Factor:\n")
+print(height_factor)
+cat("Levels of Height Factor:\n")
+print(levels(height_factor))
+
+
+# 2. Random LETTERS sample as factor
+set.seed(123)
+
+letters_sample <- sample(LETTERS[1:5], 10, replace = TRUE)
+letter_factor <- factor(letters_sample)
+
+cat("\nRandom Letters Sample:\n")
+print(letters_sample)
+
+cat("Letters as Factor:\n")
+print(letter_factor)
+
+cat("Summary of Letter Factor:\n")
+print(summary(letter_factor))
+
+cat("Levels of Letter Factor:\n")
+print(levels(letter_factor))
