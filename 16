@@ -1,0 +1,26 @@
+data(USArrests)
+
+summary(USArrests)
+# state with largest rape arrests
+rape_max_state <- rownames(USArrests)[which.max(USArrests$Rape)]
+rape_max_state
+
+# max & min murder rates
+max_murder <- max(USArrests$Murder)
+min_murder <- min(USArrests$Murder)
+
+# correlation among features
+cor(USArrests)
+
+# median Assault and bottom 25% murder
+med_assault <- median(USArrests$Assault)
+state_med_assault <- rownames(USArrests)[which(USArrests$Assault > med_assault)]
+quant_murder <- quantile(USArrests$Murder, probs = c(0.25,0.5,0.75))
+bottom25_murder <- rownames(USArrests)[USArrests$Murder <= quant_murder[1]]
+
+# Visualizations
+par(mfrow=c(2,2))
+hist(USArrests$Rape, main="Rape Histogram")
+plot(density(USArrests$Rape), main="Rape Density")
+plot(USArrests$Murder, USArrests$Assault, main="Murder vs Assault", xlab="Murder", ylab="Assault")
+barplot(colMeans(USArrests), main="Mean Arrests by State", ylim=c(0, max(colMeans(USArrests))))

@@ -1,0 +1,13 @@
+# Simulated advertising data
+set.seed(1)
+ad <- data.frame(Spend = 1:100,
+                 Sales = 2.5 + 0.8*(1:100) + rnorm(100, 0, 5))
+
+# Linear regression
+model <- lm(Sales ~ Spend, data = ad)
+summary(model)
+
+# Predict for new Spend values
+new_spend <- data.frame(Spend = c(110, 150, 200))
+pred <- predict(model, newdata = new_spend)
+pred

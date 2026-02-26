@@ -1,0 +1,11 @@
+data("ChickWeight", package = "datasets")
+# Fit: weight ~ Time + Diet
+mod <- lm(weight ~ Time + Diet, data = ChickWeight)
+summary(mod)
+
+# Predict on training data (example)
+ChickWeight$pred <- predict(mod, newdata = ChickWeight)
+
+# Model error (RMSE)
+rmse <- sqrt(mean((ChickWeight$weight - ChickWeight$pred)^2, na.rm = TRUE))
+rmse

@@ -1,0 +1,5 @@
+a <- matrix(1:6, nrow = 2)
+b <- matrix(7:12, nrow = 2)
+
+rbind(a, b)
+# If you mean combining along rows from two matrices with same columns

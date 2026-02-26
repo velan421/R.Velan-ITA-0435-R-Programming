@@ -1,0 +1,21 @@
+set.seed(1)
+df <- data.frame(group = rep(LETTERS[1:3], each = 50),
+                 value = c(rnorm(50, 5), rnorm(50, 7), rnorm(50, 6)))
+
+# boxplot
+boxplot(value ~ group, data = df, main = "Boxplot by Group")
+
+# histogram
+hist(df$value, breaks = 15, main = "Histogram of Value", xlab = "Value")
+
+# bar plot (means)
+library(dplyr)
+means <- df %>% group_by(group) %>% summarise(mean_value = mean(value))
+barplot(means$mean_value, names.arg = means$group, main = "Mean Value by Group")
+
+# line chart
+line_df <- data.frame(x = 1:10, y = cumsum(rnorm(10)))
+plot(line_df$x, line_df$y, type = "l", main = "Line Chart")
+
+# scatter plot
+plot(iris$Petal.Length, iris$Petal.Width, main = "Petal Length vs Width", xlab = "Petal.Length", ylab = "Petal.Width")

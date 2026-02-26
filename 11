@@ -1,0 +1,4 @@
+# replace 'path/to/file.csv' with your file path
+df <- read.csv("exam_data.csv", stringsAsFactors = FALSE)
+print(df)
+head(df)

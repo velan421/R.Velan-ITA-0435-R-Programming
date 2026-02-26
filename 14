@@ -1,0 +1,16 @@
+data("ChickWeight", package = "datasets")
+
+# sorting by weight descending
+ChickWeight_sorted <- ChickWeight[order(-ChickWeight$weight), ]
+head(ChickWeight_sorted)
+
+# melt
+library(reshape2)
+CW_melt <- melt(ChickWeight, id.vars = c("Diet"," Chick"), measure.vars = "weight")
+# Note: actual id var names may differ; ensure correct column names
+# In standard ChickWeight, use appropriate id vars:
+CW_melt <- melt(ChickWeight, id.vars = c("Diet","Chick"), measure.vars = "weight")
+
+# cast by Diet: average weight per Diet over Time
+CW_cast <- dcast(ChickWeight, Diet ~ Time, value.var = "weight", fun.aggregate = mean, na.rm = TRUE)
+CW_cast

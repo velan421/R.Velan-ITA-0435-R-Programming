@@ -1,0 +1,9 @@
+library(reshape2)
+
+# melt
+air_melt <- melt(airquality, id.vars = c("Month","Day"), measure.vars = c("Ozone","Solar.R","Wind","Temp"))
+head(air_melt)
+
+# cast to monthly averages
+air_cast <- dcast(air_melt, Month ~ variable, mean, na.rm = TRUE)
+air_cast

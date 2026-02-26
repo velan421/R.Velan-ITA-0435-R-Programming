@@ -1,0 +1,21 @@
+data(iris)
+
+# basic
+dim(iris)
+summary(iris)
+sd_vals <- sapply(iris[1:4], sd)
+sd_vals
+quantiles <- lapply(iris[1:4], quantile)
+
+# grouping by Species
+aggregate(iris[1:4], by = list(Species = iris$Species), FUN = mean)
+
+# pivot-like table: mean Sepal.Length by Species
+library(dplyr)
+iris %>% group_by(Species) %>% summarise(across(everything(), mean))
+
+# categorical grouping with Sepal.Length categories
+iris <- iris %>%
+  mutate(Sepal.LengthCat = cut(Sepal.Length, breaks = quantile(Sepal.Length, probs = seq(0,1,0.25)), include.lowest = TRUE))
+
+table(iris$Species, iris$Sepal.LengthCat)
